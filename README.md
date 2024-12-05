@@ -1,4 +1,6 @@
 # Template for learning a new programming language: Golang
+- YouTube link: [Running Hello World in Golang](https://youtu.be/KJrWDlZ7Y_Y)
+- Note, this page can be seen in HTML, but viewing Githhub markdown looks much better.
 ## Entry Point and Simple I/O
 ### Running Go 
 - `go run .` to compile and run the code.
