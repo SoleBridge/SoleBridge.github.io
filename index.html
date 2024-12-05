@@ -1,1 +1,515 @@
-Hello World
+<h1 id="template-for-learning-a-new-programming-language-golang">Template for learning a new programming language: Golang</h1>
+<h2 id="entry-point-and-simple-i-o">Entry Point and Simple I/O</h2>
+<h3 id="running-go">Running Go</h3>
+<ul>
+<li><code>go run .</code> to compile and run the code.</li>
+<li><code>go build</code> to build a binary.</li>
+<li><a href="https://go.dev/tour/welcome/1">A Tour Of Go</a> online environment.<h4 id="-hello-world-program">&quot;Hello world&quot; program</h4>
+</li>
+<li>Declare <code>package main</code> to mark this as the package with the <code>main()</code> entry point.</li>
+<li><code>import &quot;fmt&quot;</code>, standard IO library.</li>
+<li>Call <code>fmt.Println()</code> to print.
+```Go
+package main
+import &quot;fmt&quot;</li>
+</ul>
+<p>func main() {
+    fmt.Println(&quot;Hello, World!&quot;)
+}</p>
+<pre><code>#### Input and output - echo program
+- The `<span class="hljs-string">"bufio"</span>` package provides buffered IO, useful for input/output strings.
+```Go
+package main
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">"bufio"</span>
+    <span class="hljs-string">"fmt"</span>
+    <span class="hljs-string">"os"</span>
+)
+
+func main() {
+    reader := bufio.NewReader(os.Stdin)
+    fmt.Print(<span class="hljs-string">"&gt; "</span>)
+    text, _ := reader.ReadString(<span class="hljs-string">'\n'</span>)
+    fmt.Println(text)
+}
+</code></pre><h4 id="standard-library">Standard library</h4>
+<ul>
+<li><a href="https://pkg.go.dev/std">Standard library reference</a>.<h2 id="syntax">Syntax</h2>
+</li>
+<li>Expressions separated by newline or by <code>;</code>.<h3 id="comments">Comments</h3>
+</li>
+<li>Single line comments after <code>//</code>.</li>
+<li>Multi-line comments between <code>/*</code> and <code>*/</code>.<h3 id="variable-declarations">Variable Declarations</h3>
+</li>
+<li><code>var variablename type = value</code><ul>
+<li>This syntax improves readability compared to C syntax, see <a href="https://go.dev/blog/declaration-syntax">this article</a>.</li>
+</ul>
+</li>
+<li><code>variablename := value</code><ul>
+<li>This syntax is not always available, the type is inferred.</li>
+</ul>
+</li>
+<li><code>var</code> can be scoped to a package or a function.<ul>
+<li>With an initial value, type can be omitted (inferred from value).</li>
+<li><strong>Inside a function</strong>, short assignment (<code>:=</code>) can be used instead of <code>var</code> This can&#39;t be done at the package scope.<h2 id="primitive-types">Primitive Types</h2>
+</li>
+</ul>
+</li>
+<li>Primitive types:  <ul>
+<li><code>bool</code></li>
+<li><code>string</code></li>
+<li><code>int</code>, <code>int8</code>, <code>int16</code>, <code>int32</code>, <code>int64</code></li>
+<li><code>uint</code>, <code>uint8</code>, <code>uint16</code>, <code>uint32</code>, <code>uint64</code>, <code>uintptr</code></li>
+<li><code>byte</code> (<code>uint8</code>)</li>
+<li><code>rune</code> (<code>int32</code>)</li>
+<li><code>float32</code>, <code>float64</code></li>
+<li><code>complex64</code>, <code>complex128</code><h3 id="zero-values-">Zero values:</h3>
+</li>
+</ul>
+</li>
+<li><code>0</code> for numeric types.</li>
+<li><code>false</code> for boolean</li>
+<li><code>&quot;&quot;</code> for strings.<h3 id="constants-">Constants:</h3>
+</li>
+<li>Constants are <strong>values</strong> of character, string, boolean, or numeric types.<ul>
+<li>Constants cannot be declared with <code>:=</code>.</li>
+</ul>
+</li>
+<li>Constants are declared with <code>const</code>: <code>const Truth = true</code>.</li>
+<li>When a variable is assigned from a numeric constant, it may be an <code>int</code>, <code>float64</code>, or <code>complex128</code> depending on the constant value:<pre><code class="lang-Go">i := <span class="hljs-number">12</span>         <span class="hljs-comment">// int</span>
+f := <span class="hljs-number">2.714</span>      <span class="hljs-comment">// float64</span>
+g := <span class="hljs-number">1.0</span> + <span class="hljs-number">0.5i</span> <span class="hljs-comment">// complex128</span>
+</code></pre>
+<h3 id="primitive-operations">Primitive Operations</h3>
+<h4 id="arithmetic-operators">Arithmetic Operators</h4>
+| Operator | Arity  | Function       |
+| -------- | ------ | -------------- |
+| +        | binary | addition       |
+| -        | binary | subtraction    |
+| *        | binary | multiplication |
+| /        | binary | division       |
+| %        | binary | modulus        |
+| ++       | unary  | increment      |
+| --       | unary  | decrement      |<h4 id="relational-operators">Relational operators</h4>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Arity</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>binary</td>
+<td>Equal To</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>binary</td>
+<td>Not Equal To</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>binary</td>
+<td>Greater Than</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>binary</td>
+<td>Less Than</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>binary</td>
+<td>Greater Than Equal To</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>binary</td>
+<td>Less Than Equal To</td>
+</tr>
+</tbody>
+</table>
+<h4 id="logical-operators">Logical operators</h4>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Arity</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;&amp;</td>
+<td>binary</td>
+<td>Logical And</td>
+</tr>
+<tr>
+<td>\</td>
+<td>\</td>
+<td></td>
+<td>binary</td>
+<td>Logical Or</td>
+</tr>
+<tr>
+<td>!</td>
+<td>unary</td>
+<td>Logical Not</td>
+</tr>
+</tbody>
+</table>
+<h4 id="bitwise-operators">Bitwise Operators</h4>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Arity</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;</td>
+<td>binary</td>
+<td>Bitwise And</td>
+</tr>
+<tr>
+<td>\</td>
+<td></td>
+<td>binary</td>
+<td>Bitwise Or</td>
+</tr>
+<tr>
+<td>^</td>
+<td>binary</td>
+<td>Bitwise Xor</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>binary</td>
+<td>Left Shift</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>binary</td>
+<td>Right Shift</td>
+</tr>
+<tr>
+<td>&amp;^</td>
+<td>binary</td>
+<td>And Not: Used for bit clearing</td>
+</tr>
+</tbody>
+</table>
+<h4 id="assignment-operators">Assignment Operators</h4>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Arity</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>binary</td>
+<td>Simple Assignment</td>
+</tr>
+<tr>
+<td>+=</td>
+<td>binary</td>
+<td>Add Assignment</td>
+</tr>
+<tr>
+<td>-=</td>
+<td>binary</td>
+<td>Subtract Assignment</td>
+</tr>
+<tr>
+<td>*=</td>
+<td>binary</td>
+<td>Multiply Assignment</td>
+</tr>
+<tr>
+<td>/=</td>
+<td>binary</td>
+<td>Division Assignment</td>
+</tr>
+<tr>
+<td>%=</td>
+<td>binary</td>
+<td>Modulus Assignment</td>
+</tr>
+<tr>
+<td>&amp;=</td>
+<td>binary</td>
+<td>Bitwise And Assignment</td>
+</tr>
+<tr>
+<td>^=</td>
+<td>binary</td>
+<td>Bitwise Xor Assignment</td>
+</tr>
+<tr>
+<td>\</td>
+<td>=</td>
+<td>binary</td>
+<td>Bitwise Or Assignment</td>
+</tr>
+<tr>
+<td>&lt;&lt;=</td>
+<td>binary</td>
+<td>Bitwise Left Shift Assignment</td>
+</tr>
+<tr>
+<td>&gt;&gt;=</td>
+<td>binary</td>
+<td>Bitwise Right Shift Assignment</td>
+</tr>
+</tbody>
+</table>
+<h4 id="misc">Misc</h4>
+<ul>
+<li>Note: Go does not have pointer arithmetic.<h2 id="type-system">Type System</h2>
+<h3 id="type-checking-statically-typed-">Type Checking: <strong>Statically Typed</strong></h3>
+</li>
+<li>Go checks types at compile time.<h3 id="type-strength-strongly-typed-">Type Strength: <strong>Strongly Typed</strong></h3>
+</li>
+<li>Go enforces strict type conversions.</li>
+<li>Does not allow implicit coercion between types.<h3 id="type-inference">Type Inference</h3>
+</li>
+<li>When declaring an un-typed variable (with <code>:=</code>  or <code>var =</code> ), the variable&#39;s type is inferred from the value.<h2 id="functions">Functions</h2>
+<pre><code class="lang-Go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">add</span><span class="hljs-params">(x, y <span class="hljs-keyword">int</span>)</span> <span class="hljs-title">int</span></span> {
+  <span class="hljs-keyword">return</span> x + y
+}
+</code></pre>
+</li>
+<li>Functions are defined with the <code>func</code> keyword.</li>
+<li>The return type comes after the function name and arguments.</li>
+<li>Functions can take 0 or more arguments.</li>
+<li>When multiple arguments have the same type, only the last needs to have the type.<ul>
+<li>In the example, <code>x</code> and <code>y</code> are both <code>int</code>.<pre><code class="lang-Go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">swap</span><span class="hljs-params">(x, y <span class="hljs-keyword">string</span>)</span> <span class="hljs-params">(<span class="hljs-keyword">string</span>, <span class="hljs-keyword">string</span>)</span></span> {
+<span class="hljs-keyword">return</span> y, x
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Functions can return multiple values.</li>
+<li>Functions can have named return values.<ul>
+<li>Variables declared at beginning of scope, and automatically returned with a &quot;naked return&quot;.</li>
+<li>Naked returns are only recommended for short functions.<pre><code class="lang-Go">func add_sub(<span class="hljs-selector-tag">a</span>, <span class="hljs-selector-tag">b</span> int) (x, y int) {
+x = <span class="hljs-selector-tag">a</span> + <span class="hljs-selector-tag">b</span>
+y = <span class="hljs-selector-tag">a</span> - <span class="hljs-selector-tag">b</span>
+return
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Go supports Variadic functions, with <code>args ... tpye</code> syntax.<ul>
+<li>A variadic argument must be last in the list, and can be the only argument.</li>
+<li>Any non-negative number of elements can be used in a variadic function call.<pre><code class="lang-Go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">func_name</span><span class="hljs-params">(non_variadic <span class="hljs-keyword">int</span>, args ...<span class="hljs-keyword">type</span>)</span> <span class="hljs-title">return_type</span></span> {
+...
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>You return from a function with <code>return return_value(s)</code>. There can be no values, multiple values, or a naked return.</p>
+</li>
+<li><p>Functions are values, and can be passed like other values:</p>
+<pre><code class="lang-Go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">f2</span><span class="hljs-params">(fn <span class="hljs-keyword">func</span>(<span class="hljs-keyword">float64</span>, <span class="hljs-keyword">float64</span>)</span> <span class="hljs-title">float64</span>) <span class="hljs-title">float64</span></span> {
+  <span class="hljs-keyword">return</span> fn(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)
+}
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+  f1 := <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(x, y <span class="hljs-keyword">float64</span>)</span> <span class="hljs-title">float64</span></span> {
+      <span class="hljs-keyword">return</span> x + y
+  }
+  fmt.Println(f1(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>))
+
+  fmt.Println(f2(f1))
+  fmt.Println(f2(math.Pow))
+}
+</code></pre>
+</li>
+<li>Go supports closures:<pre><code class="lang-Go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">next_num</span><span class="hljs-params">()</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> <span class="hljs-title">int</span></span> {
+  i := <span class="hljs-number">0</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span> <span class="hljs-title">int</span></span> {
+      i++; <span class="hljs-keyword">return</span> i
+  }
+}
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+  next := next_num()
+  fmt.Println(next())
+  fmt.Println(next())
+  new_nums := next_num() <span class="hljs-comment">// uses new 'i' variable</span>
+  fmt.Println(new_nums())
+}
+</code></pre>
+<h2 id="in-built-standard-data-structures">In-Built (Standard) Data Structures</h2>
+<h3 id="-struct-"><code>struct</code></h3>
+</li>
+<li>A <code>struct</code> is a collection of it&#39;s fields; each field is accessed with a dot.</li>
+<li>Struct pointers can be automatically dereferenced.</li>
+<li>Structs can be returned from a function, similar to C.
+```Go
+type Person struct {
+  age int
+  name string
+}</li>
+</ul>
+<p>func main() {
+    a := Person{21, &quot;Aden&quot;}
+    b := &amp;a
+    b.age = 22
+    fmt.Println(a)
+}</p>
+<pre><code>#### `struct` literals
+- Structs can be initialized using struct literals,  with <span class="hljs-keyword">named</span> values and zero values:
+```Go
+<span class="hljs-keyword">type</span> My_struct struct {
+    X, Y <span class="hljs-built_in">int</span>
+}
+var (
+    v1 = My_struct{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>}  // My_struct
+    v2 = My_struct{X: <span class="hljs-number">1</span>}  // <span class="hljs-keyword">implicit</span> Y:<span class="hljs-number">0</span>
+    v3 = My_struct{}      // <span class="hljs-keyword">implicit</span> X:<span class="hljs-number">0</span>, Y:<span class="hljs-number">0</span>
+    p  = &amp;My_struct{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>} // *My_struct
+)
+</code></pre><h3 id="-array-"><code>array</code></h3>
+<ul>
+<li>Declared with: <code>var var_name [n]var_type</code>, where <code>n</code> is the size of the array.</li>
+<li>Cannot be resized.<h3 id="-slice-"><code>slice</code></h3>
+</li>
+<li>Declared with: <code>var var_name [low:high]var_type</code> or <code>var var_name []var_type</code>.</li>
+<li>The <code>n</code> from array deceleration is missing; as <code>low</code> and <code>high</code> are optional.</li>
+<li>Note: <code>low</code> bound index included, but <code>high</code> bound index is not.</li>
+<li>slices have <code>length</code> and <code>capacity</code> properties.</li>
+<li>Slices can be appended to: <code>var s []int;</code> <code>s = append(s, 0);</code> <code>s = append(s, 1, 2)</code> </li>
+<li><code>range</code> can be used with slices:<pre><code class="lang-Go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+  <span class="hljs-keyword">var</span> nums = []<span class="hljs-keyword">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>}
+  <span class="hljs-keyword">for</span> i, n := <span class="hljs-keyword">range</span> nums {
+      fmt.Printf(<span class="hljs-string">"nums[%d] : %d\n"</span>, i, n)
+  }
+}
+</code></pre>
+<h3 id="-map-"><code>map</code></h3>
+</li>
+<li>Maps are used for key-value pairs. The <code>make()</code> function is used to initialize a usable map.</li>
+<li>Map literals require keys.
+```Go
+type My_struct struct {
+  X, Y int
+}</li>
+</ul>
+<p>var m map[string]My_struct</p>
+<p>func main() {
+    m = make(map[string]My_struct)
+    m[&quot;Entry 0&quot;] = My_struct {
+        0, 1,
+    }
+    fmt.Println(m[&quot;Entry 0&quot;])
+}</p>
+<pre><code><span class="hljs-symbol">#### `map` operations (for map `m`):</span>
+<span class="hljs-symbol">- Insert or update an element :</span> `m[key] = elem`
+<span class="hljs-symbol">- Retrieve an element:</span> `elem = m[key]`
+<span class="hljs-symbol">- Delete an element:</span> `delete(m, key)`
+<span class="hljs-symbol">- Test if a key is present:</span> `elem, ok = m[key]`
+    - <span class="hljs-keyword">If</span> `key` is in `m`, `ok` is `true`. <span class="hljs-keyword">If</span> <span class="hljs-literal">not</span>, `ok` is `false`.
+    - <span class="hljs-keyword">If</span> `key` is <span class="hljs-literal">not</span> in the map, then `elem` is it's zero value.
+## Conditional statements
+### `if` statements
+- Braces `{ }` are always required.
+- `if` can have <span class="hljs-literal">a</span> <span class="hljs-string">"short statement"</span> that executes before the condition is evaluated, using `f<span class="hljs-literal">or</span>`-like syntax:
+```Go
+<span class="hljs-keyword">if</span> v := <span class="hljs-number">10.0</span><span class="hljs-comment">; v &lt; n {</span>
+    <span class="hljs-keyword">return</span> v
+}
+</code></pre><h3 id="-if-else-statements"><code>if</code> + <code>else</code> statements</h3>
+<ul>
+<li>Variables declared inside an <code>if</code> short statement are also available inside any of the <code>else</code> blocks.<pre><code class="lang-Go"><span class="hljs-keyword">if</span> v := <span class="hljs-number">10.0</span>; v &lt; n {
+  <span class="hljs-keyword">return</span> v
+} <span class="hljs-keyword">else</span> {
+  fmt.Printf(<span class="hljs-string">"n &gt;= v!\n"</span>)
+}
+</code></pre>
+<h3 id="-switch-statements"><code>switch</code> statements</h3>
+</li>
+<li>Meant to be more compact <code>if</code>+<code>else</code></li>
+<li>Runs the first case with a true condition, in order, and no <code>break</code> statements are needed.</li>
+<li>The cases do <strong>not</strong> need to be constants or integers.</li>
+<li>Switch cases evaluate cases from top to bottom, stopping when a case succeeds.
+```Go
+import (
+  &quot;fmt&quot;
+  &quot;runtime&quot;
+)</li>
+</ul>
+<p>func main() {
+    switch os := runtime.GOOS; os {
+    case &quot;darwin&quot;:
+        fmt.Println(&quot;OS X.&quot;)
+    case &quot;linux&quot;:
+        fmt.Println(&quot;Linux.&quot;)
+    default:
+        fmt.Printf(&quot;%s.\n&quot;, os)
+    }
+}</p>
+<pre><code>- <span class="hljs-keyword">switch</span> statements can omit the condition, to automatically evaluate to `<span class="hljs-keyword">true</span>`.
+```Go
+t := time.Now()
+<span class="hljs-keyword">switch</span> {
+<span class="hljs-keyword">case</span> t.Hour() &lt; <span class="hljs-number">12</span>:
+    fmt.Println(<span class="hljs-string">"Good morning!"</span>);
+<span class="hljs-keyword">case</span> t.Hour() &lt; <span class="hljs-number">17</span>:
+    fmt.Println(<span class="hljs-string">"Good afternoon."</span>);
+<span class="hljs-keyword">default</span>:
+    fmt.Println(<span class="hljs-string">"Good evening."</span>);
+}
+</code></pre><h3 id="no-ternary-operator">No ternary operator</h3>
+<ul>
+<li>Go does not have a ternary operator. <code>if</code>+<code>else</code> or <code>switch</code> statements must be used.<h2 id="loops">Loops</h2>
+<h3 id="-for-loop"><code>for</code> loop</h3>
+</li>
+<li>the init statement (optional): executed before the first iteration</li>
+<li>the condition expression: evaluated before every iteration</li>
+<li>the post statement (optional): executed at the end of every iteration<pre><code class="lang-Go">sum := <span class="hljs-number">0</span>
+<span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span> := <span class="hljs-number">0</span>; <span class="hljs-built_in">i</span> &lt; <span class="hljs-number">10</span>; <span class="hljs-built_in">i</span>++ {
+  sum += i
+}
+</code></pre>
+</li>
+<li>the braces <code>{ }</code> are always required.</li>
+<li>Go uses <code>for</code> for <code>while</code> loops:<ul>
+<li>If init and post statements are not present, the semicolons can be dropped, effectively making a <code>while</code> loop:<pre><code class="lang-Go"><span class="hljs-keyword">for</span> <span class="hljs-keyword">sum</span> &lt; <span class="hljs-number">1000</span> {
+<span class="hljs-keyword">sum</span> += <span class="hljs-keyword">sum</span>
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>infinite loops also use <code>for</code>, without a condition:<pre><code class="lang-Go"><span class="hljs-keyword">for</span> {
+}
+</code></pre>
+<h2 id="-defer-statements"><code>defer</code> statements</h2>
+</li>
+<li>A defer statement defers the execution of a function until the surrounding function returns.</li>
+<li>The deferred call&#39;s arguments are evaluated immediately, but the function call is not executed until the surrounding function returns.</li>
+<li>Deferred function calls are pushed onto a stack. When a function returns, its deferred calls are executed in last-in-first-out order.<pre><code class="lang-Go"><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ {
+  defer fmt.Println(i)
+}
+// prints <span class="hljs-keyword">in</span> order: <span class="hljs-string">"9 8 7 6 5 4 3 2 1 0"</span> <span class="hljs-keyword">when</span> outer scope exited
+</code></pre>
+<h2 id="user-defined-types">User-Defined Types</h2>
+</li>
+<li>Users can define types using structs.<h2 id="modularization">Modularization</h2>
+</li>
+<li>The language uses modules, defined at the start of every file.</li>
+</ul>
