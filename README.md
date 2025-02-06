@@ -9,8 +9,8 @@
 - Originally developed for for Unix.
 # Building / running code
 - TODO 
-# Syntax
-- **_Syntax_** describes the basic rules for writing programs for a C compiler.
+# Basic Syntax
+- **_Syntax_** describes the basic rules for writing programs for a C compiler (or other comilers or interpreters).
 - _Source code_ contains, among others, _comments_, _variables_, _functions_, _preprocessor macros_, _reserved keywords_, and _(string) literals_.
 - Note: I mention _data types_, _describe statements_, etc. These terms will be defined later. 
 ## Comments
@@ -29,7 +29,11 @@ line comment!
 ## Variables
 - **_Variables_** store values during computation.
 	- Variables have _types_, which define their size (in bytes) and the operations that can be done with them.
-	- Note: Think of them as "chunks of memory" or some bytes.
+ 	- Variables also have names or _identifiers_,which you can use to refer to the variable later.
+	- Note: Think of variables as "chunks of memory" or some bytes.
+ 	- Note: Think of the type as "what the memory holds.
+  		- i.e. it hold an integer, real (floating-point) number, picture, audio, a memory address (_pointer_), or something else.
+    		- This is what determines the _sizeof_ the variable or it's type.
 	- Variables are declared with the syntax:
 		- `var_type var_name;`.
 	- Multiple variables with the same type are defined with the syntax:
