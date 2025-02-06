@@ -38,7 +38,7 @@ line comment!
 		- `var_type var_name = value;`
 		- `var_type var1_name = value1, var2_name = value2;`
 ## Functions
-- **_Functions_** are names of sections of code.
+- **_Functions_** are named sections of code.
 	- Declaration syntax:
 		- `return_type name(arg_type arg_name, ...);`.
 	- Definition syntax:
