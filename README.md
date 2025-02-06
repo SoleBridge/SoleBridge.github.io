@@ -52,6 +52,14 @@ line comment!
 	- Statements are executed in order, from top to bottom.
 	- Statements end with `;`.
 	- Statements are generally on a new line, but can be separated by any white-space.
+- The following are equally valid:
+```C
+x = 0; x += 1;
+```
+```C
+x = 0;
+x += 1;
+```
 ## Preprocessor macros
 - **_Preprocessor macros_** define operations that happen before the code is compiled.
 	- Start with `#`.
