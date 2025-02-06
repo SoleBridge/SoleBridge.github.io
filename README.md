@@ -33,7 +33,7 @@ line comment!
 	- Variables are declared with the syntax:
 		- `var_type var_name;`.
 	- Multiple variables with the same type are defined with the syntax:
-		- `var_type var1_name var2_name;`
+		- `var_type var1_name, var2_name;`
 	- Note: A variable can be assigned to when it is defined:
 		- `var_type var_name = value;`
 		- `var_type var1_name = value1, var2_name = value2;`
