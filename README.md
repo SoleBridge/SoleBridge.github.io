@@ -79,6 +79,23 @@
 # Basic C Syntax
 - **_Syntax_** describes the basic rules for writing programs for a C compiler (or other comilers or interpreters).
 - Source code contains _comments_, _variables_, _functions_, _preprocessor directives_, _reserved keywords_, _literals_, _control sequences_, etc.
+
+## ex: Hello world (some basic syntax)
+- The following C code shows basic syntax and output:
+```C
+#include <stdio.h> // Use standard io library (stdio.h).
+
+// main() is a special function.
+int main() {                // This is where execution starts!
+  printf("Hello World!");	// Print a message.
+  return 0;					// Leave main().
+}                           // This is where execution ends.
+```
+- This outputs:
+```bash
+Hello, world!
+```
+
 ## Comments
 - **_Comments_** are ignored by the compiler.
 - Comments are used to document code, or temporarily "disable" a portion of the code.
@@ -116,7 +133,11 @@ Anything in here is ignored.
 ## Functions
 - **_Functions_** are named sections of code.
 - Functions take in _parameters_ (input), and _return_ a value (output).
-- Functions can have any number of parameters, but 
+- Functions can have 0 or more parameters.
+	- When a function has no parameters, the parameter list can be omitted or replaced with `void`.
+- Functions can have _variadic parameters_ (advanced topic).
+	- 
+- Functions can return a value or return without a value.
 
 
 ### Declaration and Definition
@@ -216,29 +237,25 @@ while(do_loop) {
 	i = i + 1;
 	if(i >= 10) do_while_loop = false;
 }
+printf("While loop over!\n\n");
 
 // FOR LOOP example
 printf("About to go into for loop!\n");
 for(int j = 0; j < 10; j++) // "repeat 10 times, putting the current step in j"
 	printf("\tIn for loop, step %d.\n", j);
+printf("For loop over!\n\n");
 
 // See that the for loop combines many lines into one when itterating through numbers like this.
 // Because the body of the loop only contains one expression, the {} can be omitted.
-```
 
-## ex: Hello world (basic syntax)
-- The following C code shows basic syntax and output:
-```C
-#include <stdio.h> // Use standard io library (stdio.h).
 
-// main() is a special function.
-int main() {                // This is where execution starts!
-  printf("Hello World!");	// Print a message.
-  return 0;					// Leave main().
-}                           // This is where execution ends.
-```
-- This outputs:
-```bash
-Hello, world!
+// DO-WHILE LOOP example
+do_loop = false;
+printf("About to go into do-while loop!\n  do_loop is %b.\n", do_loop);
+do {
+	printf("\tIn do-while loop!\n");
+} while(do_loop);
+printf("Do-while loop over!\n\n");
 
+// This shows the loop being executed once, and only once, as the condition is checked before the second itteration
 ```
