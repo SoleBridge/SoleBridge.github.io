@@ -35,12 +35,12 @@ line comment!
   		- i.e. it hold an integer, real (floating-point) number, picture, audio, a memory address (_pointer_), or something else.
     		- This is what determines the _sizeof_ the variable or it's type.
 	- Variables are declared with the syntax:
-		- `var_type var_name;`.
+		- `type name;`.
 	- Multiple variables with the same type are defined with the syntax:
-		- `var_type var1_name, var2_name;`
+		- `type name1, name2;`
 	- Note: A variable can be assigned to when it is defined:
-		- `var_type var_name = value;`
-		- `var_type var1_name = value1, var2_name = value2;`
+		- `type name = value;`
+		- `type name1 = value1, name2 = value2;`
 ## Functions
 - **_Functions_** are named sections of code.
 	- Declaration syntax:
