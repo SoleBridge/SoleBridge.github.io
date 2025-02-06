@@ -33,6 +33,7 @@
 	- Types determine the _sizeof_ the variable and what can be done with the variable.
 ## C Built-in Data Types
 - The following are all built-in types in C:
+
 | Left-aligned | Center-aligned | Right-aligned |
 | :---         |     :---:      |          ---: |
 | git status   | git status     | git status    |
