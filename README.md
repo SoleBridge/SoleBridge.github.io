@@ -31,27 +31,28 @@
 	- Variables and functions have _identifiers_, or names that can be used to refer to them.
 - Variables also have a _type_, which tells the compiler _how_ to look at the value.
 	- i.e. `int` only stores integers (whole numbers), and `float` stores real numbers (with a decimal point).
-	- Types determine the `sizeof` the variable (how much memory it takes), and what can be done with the variable.
+	- Types determine the `sizeof` the variable (how much memory, in bytes, it takes), and what can be done with the variable.
 ## C Built-in Data Types
 - The following are some built-in types in C:
 
-| Type     | Interpretation (use)   |              Range*                                | Size (bytes)* |
+| Type     | Interpretation (use)   |              Range                                | Size (bytes) |
 | :---     | :---                   |              :---:                                 |          ---: |
 | `int`    | Integer (whole number) | -2,147,483,648 to 2,147,483,647                    |             4 |
 | `char`   | Character (letter)     | -128 to 127                                        |             1 |
 | `float`  | Real number            | 1.175494351E-38 to 3.402823466E+38                 |             4 |
 | `double` | Real number            | 2.2250738585072014E-308 to 1.7976931348623158E+308 |             8 |
 | `void`   | No type**                | NA                                                 |             1 |
+- Note:  These values are typical for a common and modern desktop computer.
+- Size, and therefore range, of types can vary between compilers and build targets (computers).
 
-- Size, and therefore range, of variables can vary between compilers and build targets (computers).
-- * These values are typical for a common and modern desktop computer.
-- ** `void` is used to show that a function _doesn't return a result_, or _doesn't take a parameter_.
-- ** `void` is used to show _pointers that don't point to a type_ (advanced topic).
-- Note: `int` and `char` are _integral_ datatypes, meaning they are integers and can be used in conditions.
-- There are more types, particularly these mixed with `long` and `short`; `signed` and `unsigned`. These affect the size and range of the type.
+- `void` is used to show that a function _doesn't return a result_, or _doesn't take a parameter_.
+- `void` is used to show _pointers that don't point to a type_ (advanced topic).
 
-- The following are standard types in C, from `stdint.h`
+- `int` and `char` are _integral_ datatypes, meaning they are integers and can be used in conditions.
+- There are more types, particularly these mixed with `long` and `short`; `signed` and `unsigned`.
+	- These affect the size and range of the type.
 
+- The following are standard types in C, from `stdint.h`:
 
 | Type       | Interpretation (use) | Size (bytes) | Size (bits) | Range |
 | :---       | :---                 |         ---: |        ---: |  ---: |
@@ -69,10 +70,12 @@
 
 | Type   | Interpretation (use) | Size (bytes) | Size (bits) |             Range |
 | :---   | :---                 |         ---: |        ---: |              ---: |
-| `bool` | Boolean (true/false) |            1 |          8* | `true` or `false` |
+| `bool` | Boolean              |            1 |           8 | `true` or `false` |
 
-- * Boolean values need only be `true` or `false`, taking 1 bit. But modern computers address by bytes (8 bits).
 - `bool` is meant to be used in condition expressions.
+- Note: Boolean values need only be `true` or `false`, taking 1 bit. But modern computers address memory by bytes (8 bits).
+	- Multiple boolean values can be stored into the bits of an integer (intermediate topic).
+
 
 ---
 
@@ -173,10 +176,12 @@ x = 1;		// seperated with ; and arbitrary white space
 	- Note: This is commonly used to bring in external code (`#include <stdio.h>`).
 	- Note: This is also used to replace text in the code, i.e. a constant (`#define CONSTANT 5`).
 	- Note: This is also used for _guard code_ (`#pragma once`) (moderate topic).
+
 ## Keywords
 - **_Keywords_** are used by the C language, and you cannot name any _identifier_ (function or variable name) the same as any keyword.
 	- Keywords, generally, have a special purpose such as _conditionals_, _loops_, etc.
 	- Some keywords are `if`, `else`, `for`, `while`, `break`, `continue`, and `return`.
+
 ## Literals
 - **_Literals_** are values within the code.
 - _String literals_ are a sequence of characters between quotation marks: `"Something."`.
