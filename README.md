@@ -131,10 +131,11 @@ Anything in here is ignored.
 	
 ## Statements
 - **_Statements_** can include declarations, assignments, conditional execution, arithmetic, etc.
-	- Statements are executed in order, from top to bottom.
-	- Statements end with `;`.
-	- Statements are generally on a new line, but can be separated by any white-space.
-- The following are both valid sequences of statements:
+- Statements are executed in order, from top to bottom*.
+- Statements end with `;`.
+
+- Statements are generally on a new line, but can be separated by any white-space.
+	- The following are both valid sequences of statements:
 ```C
 int x = 0; x = 1; // On one line, seperated with ;
 ```
@@ -142,6 +143,9 @@ int x = 0; x = 1; // On one line, seperated with ;
 int x = 0;	// On multiple lines
 x = 1;		// seperated with ; and arbitrary white space
 ```
+
+- * Compilers can actually change the order of statements, as long as the result produces the same output (very advanced topic, _compiler optimization_).
+
 ## Preprocessor directives
 - **_Preprocessor directives_** happen before the code is compiled, or as the first stage of the compilation process.
 	- They start with `#`.
@@ -238,7 +242,3 @@ int main() {                // This is where execution starts!
 Hello, world!
 
 ```
-
-# Statements
-- **_Statements_** 
-## ex: Temperature converter (basic arithmetic)
